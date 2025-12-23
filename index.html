@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda Peluquería</title>
+    <style>
+        body { font-family: sans-serif; max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        input, select, button { width: 100%; margin-bottom: 15px; padding: 10px; box-sizing: border-box; }
+        button { background-color: #28a745; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Agendar Cita</h2>
+    <form id="citaForm">
+        <input type="text" id="nombre" placeholder="Tu Nombre" required>
+        <input type="tel" id="telefono" placeholder="Tu Teléfono" required>
+        <select id="servicio">
+            <option value="Corte Hombre">Corte Hombre</option>
+            <option value="Barba">Barba</option>
+            <option value="Corte + Barba">Corte + Barba</option>
+        </select>
+        <input type="datetime-local" id="fechaCita" required>
+        <button type="submit">Reservar Turno</button>
+    </form>
+
+    <script>
+        const URL_GAS = "https://script.google.com/macros/s/AKfycbzry8E2VCJMDjEaM0v6hRuBpRxKsqNkhAxScanl5JJ_H4SgKAhVD8U9O1UPAEKeVypW/exec";
+
+        document.getElementById('citaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const datos = {
+                nombre: document.getElementById('nombre').value,
+                telefono: document.getElementById('telefono').value,
+                servicio: document.getElementById('servicio').value,
+                fechaCita: document.getElementById('fechaCita').value
+            };
+
+            fetch(URL_GAS, {
+                method: 'POST',
+                mode: 'no-cors', // Para evitar problemas de CORS
+                body: JSON.stringify(datos)
+            })
+            .then(() => {
+                alert("¡Cita enviada! Revisa el calendario.");
+                document.getElementById('citaForm').reset();
+            })
+            .catch(err => alert("Error al enviar: " + err));
+        });
+    </script>
+</body>
+</html>
