@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Agenda Peluquería</title>
-    <style>
-        body { font-family: sans-serif; max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
-        input, select, button { width: 100%; margin-bottom: 15px; padding: 10px; box-sizing: border-box; }
-        button { background-color: #28a745; color: white; border: none; cursor: pointer; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h2>Agendar Cita</h2>
     <form id="citaForm">
@@ -26,9 +24,9 @@
     <script>
         const URL_GAS = "https://script.google.com/macros/s/AKfycbzry8E2VCJMDjEaM0v6hRuBpRxKsqNkhAxScanl5JJ_H4SgKAhVD8U9O1UPAEKeVypW/exec";
 
-        document.getElementById('citaForm').addEventListener('submit', function(e) {
+        document.getElementById('citaForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const datos = {
                 nombre: document.getElementById('nombre').value,
                 telefono: document.getElementById('telefono').value,
@@ -41,12 +39,42 @@
                 mode: 'no-cors', // Para evitar problemas de CORS
                 body: JSON.stringify(datos)
             })
-            .then(() => {
-                alert("¡Cita enviada! Revisa el calendario.");
-                document.getElementById('citaForm').reset();
-            })
-            .catch(err => alert("Error al enviar: " + err));
+                .then(() => {
+                    alert("¡Cita enviada! Revisa el calendario.");
+                    document.getElementById('citaForm').reset();
+                })
+                .catch(err => alert("Error al enviar: " + err));
         });
+
+        // Función para la explosión de emojis
+        function explotar() {
+            const emojis = ['💇‍♂️', '💈', '✂️', '🔥', '💥', '🍕', '🤡'];
+            for (let i = 0; i < 50; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+                // Posición inicial (centro de la pantalla)
+                p.style.left = '50vw';
+                p.style.top = '50vh';
+
+                // Dirección aleatoria de la explosión
+                p.style.setProperty('--dx', (Math.random() - 0.5) * 800 + 'px');
+                p.style.setProperty('--dy', (Math.random() - 0.5) * 800 + 'px');
+
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 1000);
+            }
+        }
+
+        // Llama a explotar() dentro del .then() de tu fetch:
+        /*
+        .then(() => {
+            explotar(); // <--- LA EXPLOSIÓN AQUÍ
+            alert("¡CITA REGISTRADA EN LA MATRIX!");
+        })
+        */
     </script>
 </body>
+
 </html>
