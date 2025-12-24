@@ -1,0 +1,130 @@
+:root {
+    --primary: #c5a059; /* Dorado Barber */
+    --dark: #121212;
+    --grey: #1e1e1e;
+    --text: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--dark);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(0,0,0,0.9);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo { font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: bold; letter-spacing: 2px; }
+.logo span { color: var(--primary); }
+
+.nav-links { list-style: none; display: flex; align-items: center; }
+.nav-links li { margin-left: 25px; }
+.nav-links a { text-decoration: none; color: white; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
+.nav-links a:hover { color: var(--primary); }
+
+/* HERO SECTION */
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 { font-family: 'Oswald', sans-serif; font-size: 4rem; letter-spacing: 5px; }
+
+/* FORMULARIO */
+.booking-section { padding: 80px 5%; }
+.booking-card {
+    background: var(--grey);
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 5px;
+    border-top: 5px solid var(--primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.booking-card h2 { font-family: 'Oswald', sans-serif; margin-bottom: 25px; text-align: center; color: var(--primary); }
+
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; margin-bottom: 8px; font-size: 0.8rem; text-transform: uppercase; color: #aaa; }
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 12px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    border: none;
+    color: black;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover { background: #e0b86a; transform: translateY(-2px); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* En celular ocultamos links simples para brevedad */
+    .hero h1 { font-size: 2.5rem; }
+    .booking-card { padding: 20px; }
+}
+
+.grid-horas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.hora-btn {
+    background: #2a2a2a;
+    border: 1px solid var(--primary);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    transition: 0.3s;
+}
+
+.hora-btn:hover {
+    background: var(--primary);
+    color: black;
+}
+
+.hora-btn.seleccionado {
+    background: var(--primary);
+    color: black;
+    box-shadow: 0 0 15px var(--primary);
+}
+
+.hora-btn:disabled {
+    background: #111;
+    border-color: #333;
+    color: #555;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
