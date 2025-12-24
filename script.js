@@ -68,6 +68,6 @@ document.getElementById('citaForm').addEventListener('submit', function(e) {
     fetch(URL_GAS, { method: 'POST', mode: 'no-cors', body: JSON.stringify(datos) })
     .then(() => {
         alert("¡Turno confirmado!");
-        location.reload(); // Recargamos para actualizar ocupadossas
+        location.reload(); // Recargamos para actualizar ocupados
     });
 });
