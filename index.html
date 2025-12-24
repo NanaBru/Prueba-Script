@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<<<<<<< HEAD
 
 <head>
     <meta charset="UTF-8">
@@ -77,3 +78,90 @@
 </body>
 
 </html>
+=======
+<head>
+    <meta charset="UTF-8">
+    <title>LA MATRIX DE LA PELUQUERÍA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>💈 TURNO MATRIX 💈</h2>
+        <form id="citaForm">
+            <input type="text" id="nombre" placeholder="TU NOMBRE HUMANO" required>
+            <input type="tel" id="telefono" placeholder="TU TELE-FONO" required>
+            <select id="servicio">
+                <option value="Corte Hombre">CORTE GALÁCTICO</option>
+                <option value="Barba">PULIDO DE BARBA</option>
+                <option value="Corte + Barba">COMBO SUPREMO</option>
+            </select>
+            <input type="datetime-local" id="fechaCita" required>
+            <button type="submit">¡LANZAR CITA AL ESPACIO!</button>
+        </form>
+    </div>
+
+    <script>
+        const URL_GAS = "https://script.google.com/macros/s/AKfycbzry8E2VCJMDjEaM0v6hRuBpRxKsqNkhAxScanl5JJ_H4SgKAhVD8U9O1UPAEKeVypW/exec";
+        // Preparamos el sonido de explosión
+        const sonidoExplosion = new Audio('https://www.soundjay.com/buttons/sounds/button-2.mp3');
+
+        document.getElementById('citaForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const datos = {
+                nombre: document.getElementById('nombre').value,
+                telefono: document.getElementById('telefono').value,
+                servicio: document.getElementById('servicio').value,
+                fechaCita: document.getElementById('fechaCita').value
+            };
+
+            fetch(URL_GAS, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify(datos)
+            })
+            .then(() => {
+                // 1. Ejecutar sonido
+                sonidoExplosion.play();
+                
+                // 2. Ejecutar explosión visual
+                explotar();
+
+                // 3. Limpiar formulario y avisar
+                setTimeout(() => {
+                    alert("¡BOOM! Cita registrada en el Excel y en el Calendario.");
+                    document.getElementById('citaForm').reset();
+                }, 1000);
+            })
+            .catch(err => alert("¡ERROR FATAL EN LA MATRIX!: " + err));
+        });
+
+        function explotar() {
+            const emojis = ['💇‍♂️', '💈', '✂️', '🔥', '💥', '🍕', '🤡', '🚀', '🌈'];
+            // Aumenté a 100 para que sea más absurdo
+            for (let i = 0; i < 100; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+                p.style.left = '50vw';
+                p.style.top = '50vh';
+
+                // Movimiento súper aleatorio
+                const x = (Math.random() - 0.5) * window.innerWidth;
+                const y = (Math.random() - 0.5) * window.innerHeight;
+                
+                p.style.setProperty('--dx', x + 'px');
+                p.style.setProperty('--dy', y + 'px');
+
+                document.body.appendChild(p);
+                
+                // Eliminar el emoji después de la animación
+                setTimeout(() => p.remove(), 1000);
+            }
+        }
+    </script>
+</body>
+</html>
+>>>>>>> d67ed4321710228a41707871676ce9225f72babd
