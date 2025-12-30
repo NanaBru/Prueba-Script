@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbería Elite 2025</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">BARBER<span>ELITE</span></div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#agendar" class="btn-nav">Reservar Ahora</a></li>
+        </ul>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>CORTES DE AUTOR</h1>
+            <p>Estilo, precisión y tradición en cada detalle.</p>
+            <a href="#agendar" class="btn-main">AGENDAR TURNO</a>
+        </div>
+    </header>
+
+    <section id="agendar" class="booking-section">
+        <div class="container">
+            <div class="booking-card">
+                <h2>Reserva tu lugar</h2>
+                <form id="citaForm">
+                    <div class="input-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Teléfono</label>
+                        <input type="tel" id="telefono" placeholder="Ej: 099 123 456" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Servicio</label>
+                        <select id="servicio">
+                            <option value="Corte Clásico">Corte Clásico - $450</option>
+                            <option value="Barba y Perfilado">Barba y Perfilado - $300</option>
+                            <option value="Corte + Barba">Combo Elite - $650</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>1. Selecciona el Día</label>
+                        <input type="date" id="fechaDia" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>2. Horarios Disponibles para ese día</label>
+                        <div id="contenedorHoras" class="grid-horas">
+                            <p class="instruccion">Selecciona un día para ver turnos...</p>
+                        </div>
+                        <input type="hidden" id="horaFinal" required>
+                    </div>
+
+                    <button type="submit" id="btnEnviar">CONFIRMAR TURNO</button>
+                    <p id="msgStatus" class="status-msg"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
