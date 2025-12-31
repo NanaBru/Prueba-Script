@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #panorama {
+            position: absolute;
+            top: 0;
+            left: 0;    
+            width: 100%;
+            height: 100vh;
+            /* Ajusta la altura a tu gusto */
+           
+           
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
+    <div class="container-360">
+        
+        <div id="panorama"></div>
+    </div>
+
+    <script>
+        pannellum.viewer('panorama', {
+            "type": "equirectangular",
+            "panorama": "papa.jpg", // <--- Nombre de tu archivo de imagen
+            "autoLoad": true,              // Carga automáticamente
+            "autoRotate": -2,              // Gira sola lentamente para llamar la atención
+            /* "title": "Nuestra Barbería",
+            "author": "Elite Barber", */
+            "vaov": 100,                   // Campo de visión vertical
+            "showFullscreenCtrl": true     // Permite ver en pantalla completa
+
+        });
+    </script>
+</body>
+
+</html>
